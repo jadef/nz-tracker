@@ -31,11 +31,14 @@
 </template>
 
 <script>
-module.exports = {
+import entryCreate from "./controls/create.vue";
+import entryDelete from "./controls/delete.vue";
+
+export default {
   name: "controls",
   components: {
-    create: httpVueLoader("scripts/controls/create.vue"),
-    delete: httpVueLoader("scripts/controls/delete.vue"),
+    create: entryCreate,
+    delete: entryDelete,
   },
   data: function () {
     return {
@@ -48,5 +51,5 @@ module.exports = {
 </script>
 
 <style lang="scss" scoped>
-@import "./controls.scss";
+// @import "./controls.scss";
 </style>

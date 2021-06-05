@@ -1,6 +1,7 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   "mode": "development",
@@ -18,6 +19,7 @@ module.exports = {
   },
   "plugins": [
     new webpack.HotModuleReplacementPlugin(),
+    new VueLoaderPlugin(),
     // new ReactRefreshWebpackPlugin(),
     // new webpack.NoEmitOnErrorsPlugin(),
     new StyleLintPlugin({
@@ -44,13 +46,13 @@ module.exports = {
         "test": /\.vue?$/,
         "exclude": /node_modules/,
         "use": [
-          { "loader": "vue" },
-          { "loader": "babel-loader" },
+          { "loader": "vue-loader" },
           { "loader": "webpack-module-hot-accept" }
         ]
       }, {
         "test": /\.scss$/,
         "use": [
+          { "loader": "vue-style-loader" },
           { "loader": "style-loader" },
           { "loader": "css-loader", "options": { sourceMap: true } },
           { "loader": "postcss-loader", "options": { sourceMap: true } },

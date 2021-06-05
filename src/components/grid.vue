@@ -10,10 +10,12 @@
 </template>
 
 <script>
-module.exports = {
+import card from "./grid/card.vue";
+
+export default {
   name: "grid",
   components: {
-    card: httpVueLoader("scripts/grid/card.vue"),
+    card: card,
   },
   data: function () {
     return { cards: [] };
@@ -87,5 +89,5 @@ module.exports = {
 </script>
 
 <style lang="scss" scoped>
-@import "./grid.scss";
+// @import "./grid.scss";
 </style>

@@ -87,7 +87,7 @@
 </template>
 
 <script>
-module.exports = {
+export default {
   name: "card",
   props: ["card"],
   data: function () {
@@ -97,5 +97,5 @@ module.exports = {
 </script>
 
 <style lang="scss" scoped>
-@import "./card.scss";
+// @import "./card.scss";
 </style>

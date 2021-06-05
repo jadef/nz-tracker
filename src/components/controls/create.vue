@@ -92,7 +92,7 @@
 </template>
 
 <script>
-module.exports = {
+export default {
   name: "create",
   data: function () {
     return {
@@ -178,5 +178,5 @@ module.exports = {
 </script>
 
 <style lang="scss" scoped>
-@import "./create.scss";
+// @import "./create.scss";
 </style>
