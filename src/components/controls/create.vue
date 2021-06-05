@@ -1,7 +1,7 @@
 <template>
 <div class="create__wrapper">
   <form id="create-bin" @submit.prevent="processForm">
-    
+
     <div class="create__field">
       <label class="create__label" for="name">Name</label>
       <input class="create__input" type="text" name="name" v-model="name" />
@@ -83,9 +83,9 @@
       <label class="create__label" for="date">Date</label>
       <input class="create__input" type="date" name="date" v-model="date" />
     </div>
-    
+
     <button class="create__submit create__submit--disabled" type="submit">Add</button>
-    
+
     <div class="create__response" v-show="response">{{ response }}</div>
   </form>
 </div>
@@ -93,49 +93,66 @@
 
 <script>
 module.exports = {
-  name: 'create',
-  data: function() { return {
-    'response': '',
-    'name': '',
-    'category': '',
-    'image': '',
-    'maps': '',
-    'photos': '',
-    'doc': '',
-    'relevant': [],
-    'description': '',
-    'date': '',
-    'activity': '',
-    'effort': '',
-    'distance': '',
-    'favorite': false,
-    'beenthere': false
-  }},
+  name: "create",
+  data: function () {
+    return {
+      response: "",
+      name: "",
+      category: "",
+      image: "",
+      maps: "",
+      photos: "",
+      doc: "",
+      relevant: [],
+      description: "",
+      date: "",
+      activity: "",
+      effort: "",
+      distance: "",
+      favorite: false,
+      beenthere: false,
+    };
+  },
   methods: {
-    processForm: function() {
-      var entry = '{ "name": "' + this.name + 
-          '", "category": "' + this.category + 
-          '", "image": "' + this.image + 
-          '", "maps": "' + this.maps + 
-          '", "photos": "' + this.photos + 
-          '", "doc": "' + this.doc + 
-          '", "relevant": ' + this.relevant + 
-          ', "description": "' + this.description + 
-          '", "date": "' + this.date + 
-          '", "activity": "' + this.activity + 
-          '", "effort": "' + this.effort + 
-          '", "distance": "' + this.distance + 
-          '", "favorite": ' + this.favorite + 
-          ', "beenthere": ' + this.beenthere + 
-          ' }';
-      
+    processForm: function () {
+      var entry =
+        '{ "name": "' +
+        this.name +
+        '", "category": "' +
+        this.category +
+        '", "image": "' +
+        this.image +
+        '", "maps": "' +
+        this.maps +
+        '", "photos": "' +
+        this.photos +
+        '", "doc": "' +
+        this.doc +
+        '", "relevant": ' +
+        this.relevant +
+        ', "description": "' +
+        this.description +
+        '", "date": "' +
+        this.date +
+        '", "activity": "' +
+        this.activity +
+        '", "effort": "' +
+        this.effort +
+        '", "distance": "' +
+        this.distance +
+        '", "favorite": ' +
+        this.favorite +
+        ', "beenthere": ' +
+        this.beenthere +
+        " }";
+
       this.submitForm(entry);
     },
     submitForm: function (entry) {
       var self = this;
       var dataURL = "https://api.jsonbin.io/b";
       var key = "$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa";
-      
+
       let req = new XMLHttpRequest();
 
       req.onreadystatechange = () => {
@@ -151,11 +168,15 @@ module.exports = {
       req.setRequestHeader("collection-id", "5f83f9ee7243cd7e824e36d8");
       req.setRequestHeader("secret-key", key);
       req.send(entry);
-      
-      req.onerror = function() {
-        console.log('error4: add onerror');
+
+      req.onerror = function () {
+        console.log("error4: add onerror");
       };
-    }
-  }
-}
+    },
+  },
+};
 </script>
+
+<style lang="scss" scoped>
+@import "./create.scss";
+</style>

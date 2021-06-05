@@ -9,7 +9,7 @@
     margin-bottom: 50px;
     position: relative;
   }
-  
+
   @media screen and (min-width: $bp-small) {
     &__wrapper {
       align-items: flex-start;
@@ -23,13 +23,13 @@
       width: 48%;
     }
   }
-  
+
   @media screen and (min-width: $bp-medium) {
     &__card {
       width: 32%;
     }
   }
-  
+
   @media screen and (min-width: $bp-large) {
     &__card {
       width: 24%;

@@ -24,7 +24,7 @@ button {
   background-color: $accent;
   border: 0;
   border-radius: 3px;
-  box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.15);
+  box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
   color: $rev-foreground;
   cursor: pointer;
   display: block;
@@ -32,7 +32,7 @@ button {
   font-size: 18px;
   font-weight: 300;
   padding: 10px 20px;
-  
+
   &:hover {
     background-color: $rev-background;
   }
@@ -40,17 +40,17 @@ button {
 
 .slide-enter-active,
 .slide-leave-active {
-   transition: max-height 1s ease;
+  transition: max-height 1s ease;
 }
 
 .slide-enter-to,
 .slide-leave {
-   max-height: 400px;
-   overflow: hidden;
+  max-height: 400px;
+  overflow: hidden;
 }
 
 .slide-enter,
 .slide-leave-to {
-   max-height: 0;
-   overflow: hidden;
+  max-height: 0;
+  overflow: hidden;
 }
