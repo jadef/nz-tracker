@@ -1,0 +1,24 @@
+// Colors
+$background: #fff;
+$foreground: #000;
+
+$rev-background: #000;
+$rev-foreground: #fff;
+
+$accent: #8dcfe1;
+
+$forest: #8de192;
+$beach: #8dcfe1;
+$town: #e1c48d;
+
+$light: #cfcfcf;
+
+// Breakpoints
+$bp-small: 768px;
+$bp-medium: 900px;
+$bp-large: 1200px;
+
+// Mixins
+@mixin transition($attribute) {
+  transition: #{$attribute} 0.2s ease;
+}

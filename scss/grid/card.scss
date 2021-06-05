@@ -1,0 +1,204 @@
+@import '../elements/variables';
+
+.card {
+  &__content {
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    border-radius: 2px;
+    margin: 0 5px;
+  }
+  
+  &__action {
+    background-color: $rev-background;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 2px 2px 0 0;
+    color: $rev-foreground;
+    cursor: pointer;
+    font-weight: 400;
+    height: 50vw;
+    position: relative;
+    width: 100%;
+    
+    &.card__cat--forest {
+      background-color: $forest;
+    }
+    
+    &.card__cat--beach {
+     background-color: $beach;
+    }
+    
+    &.card__cat--town {
+      background-color: $town;
+    }
+    
+    &::after {
+      background-image: linear-gradient(-180deg, rgba(0,0,0, 0.0) 0%, rgba(0,0,0, 0.5) 100%);
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 75px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+  
+  &__title {
+    position: absolute;
+    bottom: 25px;
+    padding: 10px 10px;
+    font-size: 1.714em;
+    transition: bottom 0.4s ease 0.2s;
+    width: 100%;
+    z-index:  100;
+    
+    &.open {
+      bottom: 0;
+    }
+  }
+  
+  &__relevant {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0 0 10px;
+    
+    &--entry {
+      background: $light;
+      border-radius: 3px;
+      color: $background;
+      display: block;
+      font-size: 0.785em;
+      padding: 4px 10px; margin: 0 10px 5px 0;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      
+      &:hover {
+        background: $foreground;
+      }
+    }
+  }
+  
+  &__details {
+    padding-bottom: 40px;
+  }
+  
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 10px 0 0 10px;
+    
+    &--photos,
+    &--maps,
+    &--doc {
+      border-radius: 3px;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      display: block;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+      transition: box-shadow 500ms;
+
+      &:hover {
+        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
+      }
+    }
+  }
+  
+  &__description {
+    padding: 0 10px 30px 10px;
+    line-height: 1.6;
+  }
+  
+  &__id {
+    color: $light;
+    text-align: center;
+    font-size: 0.785em;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  &__date {
+    color: $light;
+    padding: 25px 0 10px 0;
+    text-align: center;
+    font-size: 0.785em;
+    font-weight: 500;
+    position: relative;
+    
+    &::after {
+      content: url("data:image/svg+xml,%3Csvg width='16px' height='8px' viewBox='0 0 16 8' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Cg id='Primary' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd'%3E%3Cg id='Mobile' transform='translate(-152.000000, -1338.000000)' stroke='%23979797'%3E%3Cpolyline id='Path' points='153 1344.91673 159.916727 1338 167.022795 1345.10607'%3E%3C/polyline%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      cursor: pointer;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+  
+  &__attributes {
+    background: $background;
+    box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+    border-bottom: 2px solid $foreground;
+    border-radius: 2px;
+    bottom: -25px;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    justify-content: space-between;
+    overflow-y: hidden;
+    position: absolute;
+    width: 100%;
+    
+    &.card__cat--forest {
+      border-color: $forest;
+    }
+    
+    &.card__cat--beach {
+      border-color: $beach;
+    }
+    
+    &.card__cat--town {
+      border-color: $town;
+    }
+  }
+  
+  &__activity,
+  &__effort,
+  &__distance,
+  &__favorite, {
+    height: 30px;
+    margin: 10px 5px;
+    width: 30px;
+  }
+  
+  &__stats,
+  &__modifiers {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  @media screen and (min-width: $bp-small) {
+    &__action {
+      height: 30vw;
+    }
+  }
+  
+  @media screen and (min-width: $bp-medium) {
+    &__action {
+      height: 20vw;
+    }
+  }
+  
+  @media screen and (min-width: $bp-large) {
+    &__action {
+      height: 10vw;
+    }
+  }
+}

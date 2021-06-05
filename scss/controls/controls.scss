@@ -1,0 +1,46 @@
+@import '../elements/variables';
+
+.controls {
+  &__wrapper {
+    box-shadow: 1px 1px 4px 0 rgba(0,0,0,0.15);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+  
+  &__title {
+    font-weight: 400;
+    text-align: center;
+    margin: 0 0;
+    padding: 20px 60px;
+  }
+  
+  
+  &__toggle {
+    @include transition(color);
+    color: $light;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.785em;
+    font-weight: 500;
+    padding: 30px 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    &:hover {
+      color: $accent;
+    }
+  }
+  
+  &__toggles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  &__delete,
+  &__create {
+    background-color: $light;
+    font-size: 14px;
+  }
+}
