@@ -51,5 +51,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "./controls.scss";
+@import './../scss/elements/variables.scss';
+@import './controls.scss';
 </style>

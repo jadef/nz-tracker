@@ -51,7 +51,7 @@ export default {
         });
     },
     getAllCards: function(records) {
-      records.forEach(record => this.getCard(record.record));
+      records.forEach((record) => this.getCard(record.record));
     },
     getCard: function(id) {
       var self = this;
@@ -90,5 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "./grid.scss";
+@import './../scss/elements/variables.scss';
+@import './grid.scss';
 </style>

@@ -97,5 +97,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "./card.scss";
+@import './../../scss/elements/variables.scss';
+@import './card.scss';
 </style>

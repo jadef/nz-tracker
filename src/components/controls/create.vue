@@ -178,5 +178,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @import "./create.scss";
+@import './../../scss/elements/variables.scss';
+@import "./create.scss";
 </style>
