@@ -1,42 +1,42 @@
 <template>
-<div class="create__wrapper">
+<div :class="bem('wrapper')">
   <form id="create-bin" @submit.prevent="processForm">
 
-    <div class="create__field">
-      <label class="create__label" for="name">Name</label>
-      <input class="create__input" type="text" name="name" v-model="name" />
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="name">Name</label>
+      <input :class="bem('input')" type="text" name="name" v-model="name" />
     </div>
-    <div class="create__field">
-      <label class="create__label" for="category">Category</label>
-      <select class="create__input" id="category" name="category" v-model="category">
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="category">Category</label>
+      <select :class="bem('input')" id="category" name="category" v-model="category">
         <option value="forest">Forest</option>
         <option value="beach">Beach</option>
         <option value="town">Town</option>
       </select>
     </div>
-    <div class="create__field">
-      <label class="create__label" for="image">Background Image (filename)</label>
-      <input class="create__input" type="text" name="image" v-model="image" />
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="image">Background Image (filename)</label>
+      <input :class="bem('input')" type="text" name="image" v-model="image" />
     </div>
-    <div class="create__field">
-      <label class="create__label" for="maps">Google Maps Link</label>
-      <input class="create__input" type="text" name="maps" v-model="maps" />
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="maps">Google Maps Link</label>
+      <input :class="bem('input')" type="text" name="maps" v-model="maps" />
     </div>
-    <div class="create__field">
-      <label class="create__label" for="photos">Photos Link</label>
-      <input class="create__input" type="text" name="photos" v-model="photos" />
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="photos">Photos Link</label>
+      <input :class="bem('input')" type="text" name="photos" v-model="photos" />
     </div>
-    <div class="create__field">
-      <label class="create__label" for="doc">DOC (or website) Link</label>
-      <input class="create__input" type="text" name="doc" v-model="doc" />
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="doc">DOC (or website) Link</label>
+      <input :class="bem('input')" type="text" name="doc" v-model="doc" />
     </div>
-    <div class="create__field">
-      <label class="create__label" for="relevant">Relevant</label>
-      <input class="create__input" type="text" name="relevant" v-model="relevant" />
+    <div :class="bem('field')">
+      <label  :class="bem('label')" for="relevant">Relevant</label>
+      <input :class="bem('input')" type="text" name="relevant" v-model="relevant" />
     </div>
-    <div class="create__field">
-      <label class="create__label" for="activity">Activity</label>
-      <select class="create__input" id="activity" name="activity" v-model="activity">
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="activity">Activity</label>
+      <select :class="bem('input')" id="activity" name="activity" v-model="activity">
         <option value="lounge">Lounge</option>
         <option value="hike">Hike</option>
         <option value="backpack">Backpack</option>
@@ -44,9 +44,9 @@
         <option value="other">Other</option>
       </select>
     </div>
-    <div class="create__field">
-      <label class="create__label" for="effort">Effort</label>
-      <select class="create__input" id="effort" name="effort" v-model="effort">
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="effort">Effort</label>
+      <select :class="bem('input')" id="effort" name="effort" v-model="effort">
         <option value="na">N/A</option>
         <option value="easy">Easy</option>
         <option value="moderate">Moderate</option>
@@ -54,9 +54,9 @@
         <option value="asskicking">Ass Kicking</option>
       </select>
     </div>
-    <div class="create__field">
-      <label class="create__label" for="location">Distance</label>
-      <select class="create__input" id="distance" name="distance" v-model="distance">
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="location">Distance</label>
+      <select :class="bem('input')" id="distance" name="distance" v-model="distance">
         <option value="walking">Walking</option>
         <option value="drive">Drive</option>
         <option value="long-drive">Long-Drive</option>
@@ -65,28 +65,28 @@
       </select>
     </div>
 
-    <div class="create__field">
-      <div class="create__label">Favorite</div>
-      <div class="create__input">
-        <label class="create__inlinelabel" for="favorite1">True</label>
-        <input class="create__inlineinput" type="radio" id="favorite1" name="favorite" value="true" v-model="favorite" />
-        <label class="create__inlinelabel" for="favorite2">False</label>
-        <input class="create__inlineinput" type="radio" id="favorite2" name="favorite" value="false" v-model="favorite" />
+    <div :class="bem('field')">
+      <div :class="bem('label')">Favorite</div>
+      <div :class="bem('input')">
+        <label :class="bem('inlinelabel')" for="favorite1">True</label>
+        <input :class="bem('inlineinput')" type="radio" id="favorite1" name="favorite" value="true" v-model="favorite" />
+        <label :class="bem('inlinelabel')" for="favorite2">False</label>
+        <input :class="bem('inlineinput')" type="radio" id="favorite2" name="favorite" value="false" v-model="favorite" />
       </div>
     </div>
 
-    <div class="create__field">
-      <label class="create__label" for="description">Long Description</label>
-      <textarea class="create__input" type="text" name="description" v-model="description" /></textarea>
+    <div :class="bem('field')">
+      <label :class="bem('label')" for="description">Long Description</label>
+      <textarea :class="bem('input')" type="text" name="description" v-model="description" /></textarea>
     </div>
-    <div class="create__field create__field--hidden">
-      <label class="create__label" for="date">Date</label>
-      <input class="create__input" type="date" name="date" v-model="date" />
+    <div :class="bem('field', { display: 'hidden'})">
+      <label :class="bem('label')" for="date">Date</label>
+      <input :class="bem('input')" type="date" name="date" v-model="date" />
     </div>
 
-    <button class="create__submit create__submit--disabled" type="submit">Add</button>
+    <button :class="bem('submit', { display: 'disabled'})"  type="submit">Add</button>
 
-    <div class="create__response" v-show="response">{{ response }}</div>
+    <div :class="bem('response')" v-show="response">{{ response }}</div>
   </form>
 </div>
 </template>

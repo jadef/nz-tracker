@@ -1,8 +1,8 @@
 <template>
-  <div class="controls__wrapper">
-    <h1 class="controls__title">NZ Hikers</h1>
+  <div :class="bem('wrapper')">
+    <h1 :class="bem('title')">NZ Hikers</h1>
     <div
-      class="controls__toggle"
+      :class="bem('toggle')"
       v-on:click="
         (openToggles = !openToggles) &&
           (openDelete = false) &&
@@ -11,15 +11,15 @@
     >
       Edit
     </div>
-    <div class="controls__toggles" v-show="openToggles">
+    <div :class="bem('toggles')" v-show="openToggles">
       <button
-        class="controls__create"
+        :class="bem('create')"
         v-on:click="(openCreate = !openCreate) && (openDelete = false)"
       >
         Create
       </button>
       <button
-        class="controls__delete"
+        :class="bem('delete')"
         v-on:click="(openDelete = !openDelete) && (openCreate = false)"
       >
         Delete

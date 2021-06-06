@@ -5,7 +5,7 @@
     margin: 0 5px;
   }
 
-  &__action {
+  &__start {
     background-color: $rev-background;
     background-position: center center;
     background-repeat: no-repeat;
@@ -18,15 +18,15 @@
     position: relative;
     width: 100%;
 
-    &.card__cat--forest {
+    &--cat-forest {
       background-color: $forest;
     }
 
-    &.card__cat--beach {
+    &--cat-beach {
       background-color: $beach;
     }
 
-    &.card__cat--town {
+    &--cat-town {
       background-color: $town;
     }
 
@@ -65,21 +65,21 @@
     list-style: none;
     margin: 0;
     padding: 10px 0 0 10px;
+  }
 
-    &--entry {
-      background: $light;
-      border-radius: 3px;
-      color: $background;
-      display: block;
-      font-size: 0.785em;
-      padding: 4px 10px;
-      margin: 0 10px 5px 0;
-      text-decoration: none;
-      transition: background 0.2s ease;
+  &__relevant-link {
+    background: $light;
+    border-radius: 3px;
+    color: $background;
+    display: block;
+    font-size: 0.785em;
+    padding: 4px 10px;
+    margin: 0 10px 5px 0;
+    text-decoration: none;
+    transition: background 0.2s ease;
 
-      &:hover {
-        background: $foreground;
-      }
+    &:hover {
+      background: $foreground;
     }
   }
 
@@ -93,21 +93,19 @@
     list-style: none;
     margin: 0;
     padding: 10px 0 0 10px;
+  }
 
-    &--photos,
-    &--maps,
-    &--doc {
-      border-radius: 3px;
-      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-      display: block;
-      width: 50px;
-      height: 50px;
-      margin-right: 10px;
-      transition: box-shadow 500ms;
+  &__action {
+    border-radius: 3px;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    transition: box-shadow 500ms;
 
-      &:hover {
-        box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
-      }
+    &:hover {
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
     }
   }
 
@@ -156,15 +154,15 @@
     position: absolute;
     width: 100%;
 
-    &.card__cat--forest {
+    &--cat-forest {
       border-color: $forest;
     }
 
-    &.card__cat--beach {
+    &--cat-beach {
       border-color: $beach;
     }
 
-    &.card__cat--town {
+    &--cat-town {
       border-color: $town;
     }
   }
@@ -188,19 +186,19 @@
   }
 
   @media screen and (min-width: $bp-small) {
-    &__action {
+    &__start {
       height: 30vw;
     }
   }
 
   @media screen and (min-width: $bp-medium) {
-    &__action {
+    &__start {
       height: 20vw;
     }
   }
 
   @media screen and (min-width: $bp-large) {
-    &__action {
+    &__start {
       height: 10vw;
     }
   }

@@ -1,47 +1,52 @@
 <template>
-  <div :id="'card-' + encodeURIComponent(card.name)" class="card__wrapper">
-    <div class="card__content">
+  <div :id="'card-' + encodeURIComponent(card.name)" :class="bem('wrapper')">
+    <div :class="bem('content')">
       <div
-        class="card__action"
+        :class="bem('start', { cat: card.category })"
         v-on:click="isOpen = !isOpen"
-        :class="'card__cat--' + card.category"
         v-bind:style="{ backgroundImage: 'url(' + card.image + ')' }"
       >
-        <span class="card__title" :class="{ open: isOpen }">{{
-          card.name
-        }}</span>
+        <span :class="bem('title', { open: isOpen })">
+          {{ card.name }}
+        </span>
       </div>
       <transition name="slide">
-        <div class="card__details" v-show="isOpen">
-          <ul class="card__actions">
+        <div :class="bem('details')" v-show="isOpen">
+          <ul :class="bem('actions')">
             <li v-if="card.maps">
-              <a :href="card.maps" class="card__actions--maps" target="_blank"
+              <a
+                :class="bem('action', { link: 'maps' })"
+                :href="card.maps"
+                target="_blank"
                 >Maps</a
               >
             </li>
             <li v-if="card.photos">
               <a
                 :href="card.photos"
-                class="card__actions--photos"
+                :class="bem('action', { link: 'photos' })"
                 target="_blank"
                 >Photos</a
               >
             </li>
             <li v-if="card.doc">
-              <a :href="card.doc" class="card__actions--doc" target="_blank"
+              <a
+                :href="card.doc"
+                :class="bem('action', { link: 'doc' })"
+                target="_blank"
                 >DOC Link</a
               >
             </li>
           </ul>
-          <div class="card__description" v-html="card.description"></div>
-          <div class="card__date" v-on:click="isOpen = !isOpen">
+          <div :class="bem('description')" v-html="card.description"></div>
+          <div :class="bem('date')" v-on:click="isOpen = !isOpen">
             {{ card.date }}
           </div>
-          <div class="card__id">bin id: {{ card.id }}</div>
-          <ul v-if="card.relevant" class="card__relevant">
+          <div :class="bem('id')">bin id: {{ card.id }}</div>
+          <ul v-if="card.relevant" :class="bem('relevant')">
             <li v-for="item in card.relevant">
               <a
-                class="card__relevant--entry"
+                :class="bem('relevant-link')"
                 :href="'#card-' + encodeURIComponent(item)"
                 >{{ item }}</a
               >
@@ -50,35 +55,32 @@
         </div>
       </transition>
     </div>
-    <div class="card__attributes" :class="'card__cat--' + card.category">
-      <ul class="card__stats">
+    <div :class="bem('attributes', { cat: card.category })">
+      <ul :class="bem('stats')">
         <li
           v-if="card.activity"
-          class="card__activity"
-          :class="'card__activity--' + card.activity"
+          :class="bem('activity', { value: card.activity })"
           :title="card.activity"
         >
           {{ card.activity }}
         </li>
         <li
           v-if="card.effort && card.effort != 'na'"
-          class="card__effort"
-          :class="'card__effort--' + card.effort"
+          :class="bem('effort', { value: card.effort })"
           :title="card.effort"
         >
           {{ card.effort }}
         </li>
         <li
           v-if="card.distance"
-          class="card__distance"
-          :class="'card__distance--' + card.distance"
+          :class="bem('distance', { value: card.distance })"
           :title="card.distance"
         >
           {{ card.distance }}
         </li>
       </ul>
-      <ul class="card__modifiers">
-        <li class="card__favorite" :class="'card__favorite--' + card.favorite">
+      <ul :class="bem('modifiers')">
+        <li :class="bem('favorite', { true: card.favorite })">
           {{ card.favorite }}
         </li>
       </ul>

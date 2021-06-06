@@ -1,8 +1,8 @@
 <template>
-  <div class="grid__wrapper">
+  <div :class="bem('wrapper')">
     <card
       :card="card"
-      class="grid__card"
+      :class="bem('card')"
       v-for="(card, index) in cards"
       :key="index"
     ></card>

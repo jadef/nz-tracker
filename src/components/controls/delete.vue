@@ -1,19 +1,19 @@
 <template>
-  <div class="delete__wrapper">
+  <div :class="bem('wrapper')">
     <form id="delete-bin" @submit.prevent="processForm">
-      <div class="create__field">
-        <label class="create__label" for="bin-id">Bin ID</label>
+      <div :class="bem('field')">
+        <label :class="bem('label')" for="bin-id">Bin ID</label>
         <input
-          class="create__input"
+          :class="bem('input')"
           type="text"
           name="bin-id"
           v-model="binId"
         />
       </div>
 
-      <button class="delete__submit" type="submit">Delete</button>
+      <button :class="bem('submit')" type="submit">Delete</button>
 
-      <div class="delete__response" v-show="response">{{ response }}</div>
+      <div :class="bem('response')" v-show="response">{{ response }}</div>
     </form>
   </div>
 </template>
