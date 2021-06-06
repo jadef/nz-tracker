@@ -1,5 +1,4 @@
 .card {
-
   // -- Actions
   // logos if links present
   &__actions {
@@ -43,23 +42,23 @@
   // different descriptors
   &__effort {
     &--na {
-      content: url("");
+      content: url('');
     }
 
     &--easy {
-      content: url("");
+      content: url('');
     }
 
     &--moderate {
-      content: url("");
+      content: url('');
     }
 
     &--hard {
-      content: url("");
+      content: url('');
     }
 
     &--asskicking {
-      content: url("");
+      content: url('');
     }
   }
 
@@ -67,7 +66,7 @@
   // different descriptors
   &__distance {
     &--walking {
-      content: url("");
+      content: url('');
     }
 
     &--drive {
@@ -75,15 +74,15 @@
     }
 
     &--long-drive {
-      content: url("");
+      content: url('');
     }
 
     &--over-night {
-      content: url("");
+      content: url('');
     }
 
     &--flight {
-      content: url("");
+      content: url('');
     }
   }
 

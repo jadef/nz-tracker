@@ -31,16 +31,16 @@
 </template>
 
 <script>
-import entryCreate from "./controls/create.vue";
-import entryDelete from "./controls/delete.vue";
+import entryCreate from './controls/create.vue';
+import entryDelete from './controls/delete.vue';
 
 export default {
-  name: "controls",
+  name: 'controls',
   components: {
     create: entryCreate,
     delete: entryDelete,
   },
-  data: function () {
+  data: function() {
     return {
       openToggles: false,
       openCreate: false,

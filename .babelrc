@@ -1,8 +1,5 @@
 {
-  "presets": [
-    "@babel/preset-env",
-    "vue"
-  ],
+  "presets": ["@babel/preset-env", "vue"],
   "plugins": [
     // Stage 2
     // ["@babel/plugin-proposal-decorators", { "legacy": true }],

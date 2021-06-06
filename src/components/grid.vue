@@ -10,73 +10,73 @@
 </template>
 
 <script>
-import card from "./grid/card.vue";
+import card from './grid/card.vue';
 
 export default {
-  name: "grid",
+  name: 'grid',
   components: {
     card: card,
   },
-  data: function () {
+  data: function() {
     return { cards: [] };
   },
   methods: {
-    getRecords: function () {
+    getRecords: function() {
       var self = this;
       // This fetches json data from my stored collection
       var collectionURL =
-        "https://api.jsonbin.io/v3/c/5f83f9ee7243cd7e824e36d8/bins";
-      var key = "$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa";
+        'https://api.jsonbin.io/v3/c/5f83f9ee7243cd7e824e36d8/bins';
+      var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
 
       var req = new XMLHttpRequest();
 
-      req.open("GET", collectionURL, (async = true));
-      req.setRequestHeader("Content-Type", "application/json");
-      req.setRequestHeader("X-Master-Key", key);
+      req.open('GET', collectionURL, (async = true));
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('X-Master-Key', key);
 
-      req.onload = function () {
+      req.onload = function() {
         if (req.status >= 200 && req.status < 400) {
           // Success!
           var data = JSON.parse(req.responseText);
           self.getAllCards(data);
         } else {
-          console.log("error1: getRecords non-success");
+          console.log('error1: getRecords non-success');
         }
       };
 
-      req.onerror = function () {
-        console.log("error1: getRecords onerror");
+      req.onerror = function() {
+        console.log('error1: getRecords onerror');
       };
 
       req.send();
     },
-    getAllCards: function (records) {
-      records.forEach((record) => this.getCard(record.record));
+    getAllCards: function(records) {
+      records.forEach(record => this.getCard(record.record));
     },
-    getCard: function (id) {
+    getCard: function(id) {
       var self = this;
-      var dataURL = "https://api.jsonbin.io/v3/b/" + id + "/latest";
-      var key = "$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa";
+      var dataURL = 'https://api.jsonbin.io/v3/b/' + id + '/latest';
+      var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
       var req = new XMLHttpRequest();
 
-      req.open("GET", dataURL, (async = true));
-      req.setRequestHeader("Content-Type", "application/json");
-      req.setRequestHeader("X-Master-Key", key);
+      req.open('GET', dataURL, (async = true));
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.setRequestHeader('X-Master-Key', key);
 
-      req.onload = function () {
+      req.onload = function() {
         if (req.status >= 200 && req.status < 400) {
           // Success!
           var data = JSON.parse(req.responseText);
-          data["record"]["id"] = id; // Tack id on for bin visibility
+          data['record']['id'] = id; // Tack id on for bin visibility
 
-          self.cards.push(data["record"]);
+          self.cards.push(data['record']);
         } else {
-          console.log("error2: getCard non-success");
+          console.log('error2: getCard non-success');
         }
       };
 
-      req.onerror = function () {
-        console.log("error2: getCard onerror");
+      req.onerror = function() {
+        console.log('error2: getCard onerror');
       };
 
       req.send();

@@ -3,20 +3,18 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
-    "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "types": ["webpack"],
     "paths": {
-      "@/*": ["Js/*"]
+      "@/*": ["/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["Js/**/*.ts", "Js/**/*.vue", "Js/tests/**/*.ts"],
+  "include": ["/**/*.js", "/**/*.vue", "/tests/**/*.js"],
   "exclude": ["node_modules"]
 }

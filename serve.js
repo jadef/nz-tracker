@@ -10,23 +10,19 @@ browserSync({
   port: 5080,
   server: {
     baseDir: 'src',
-    index: "index.html",
+    index: 'index.html',
     middleware: [
       webpackDevMiddleware(bundler, {
         publicPath: webpackConfig.output.publicPath,
         stats: {
           colors: true,
-        //   modules: true,
-        //   reasons: true,
-        //   errorDetails: true
-        }
+          //   modules: true,
+          //   reasons: true,
+          //   errorDetails: true
+        },
       }),
-      webpackHotMiddleware(bundler)
-    ]
+      webpackHotMiddleware(bundler),
+    ],
   },
-  files: [
-    'app/*.css',
-    'app/*.js',
-    'app/*.html'
-  ]
+  files: ['app/*.css', 'app/*.js', 'app/*.html'],
 });

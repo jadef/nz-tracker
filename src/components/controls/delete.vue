@@ -20,18 +20,18 @@
 
 <script>
 export default {
-  name: "delete",
-  data: function () {
+  name: 'delete',
+  data: function() {
     return {
-      response: "",
-      binId: "",
+      response: '',
+      binId: '',
     };
   },
   methods: {
-    processForm: function () {
+    processForm: function() {
       var self = this;
-      var dataURL = "https://api.jsonbin.io/b/" + this.binId;
-      var key = "$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa";
+      var dataURL = 'https://api.jsonbin.io/b/' + this.binId;
+      var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
 
       let req = new XMLHttpRequest();
 
@@ -43,12 +43,12 @@ export default {
         }
       };
 
-      req.open("DELETE", dataURL, true);
-      req.setRequestHeader("secret-key", key);
+      req.open('DELETE', dataURL, true);
+      req.setRequestHeader('secret-key', key);
       req.send();
 
-      req.onerror = function () {
-        console.log("error3: delete onerror");
+      req.onerror = function() {
+        console.log('error3: delete onerror');
       };
     },
   },
@@ -56,5 +56,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./delete.scss";
+@import './delete.scss';
 </style>

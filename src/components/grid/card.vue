@@ -88,9 +88,9 @@
 
 <script>
 export default {
-  name: "card",
-  props: ["card"],
-  data: function () {
+  name: 'card',
+  props: ['card'],
+  data: function() {
     return { isOpen: false };
   },
 };

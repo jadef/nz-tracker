@@ -6,18 +6,17 @@
 </template>
 
 <script lang="ts">
-import grid from "./components/grid.vue";
-import controls from "./components/controls.vue";
+import grid from './components/grid.vue';
+import controls from './components/controls.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     grid,
     controls,
   },
-  data: function () {
+  data: function() {
     return { cards: [] };
   },
 };
 </script>
-
