@@ -42,7 +42,7 @@
           <div :class="bem('date')" v-on:click="isOpen = !isOpen">
             {{ card.date }}
           </div>
-          <div :class="bem('id')">bin id: {{ card.id }}</div>
+          <delete :binId="card.id" />
           <ul v-if="card.relevant" :class="bem('relevant')">
             <li v-for="item in card.relevant">
               <a
@@ -89,8 +89,13 @@
 </template>
 
 <script>
+import entryDelete from './../controls/delete.vue';
+
 export default {
   name: 'card',
+  components: {
+    delete: entryDelete,
+  },
   props: ['card'],
   data: function() {
     return { isOpen: false };

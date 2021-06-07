@@ -1,7 +1,7 @@
 <template>
   <div :class="bem('wrapper')">
     <form id="delete-bin" @submit.prevent="processForm">
-      <div :class="bem('field')">
+      <div :class="bem('field')" v-show="false">
         <label :class="bem('label')" for="bin-id">Bin ID</label>
         <input
           :class="bem('input')"
@@ -11,7 +11,9 @@
         />
       </div>
 
-      <button :class="bem('submit')" type="submit">Delete</button>
+      <button :class="bem('submit', { size: 'small' })" type="submit">
+        Delete
+      </button>
 
       <div :class="bem('response')" v-show="response">{{ response }}</div>
     </form>
@@ -21,6 +23,7 @@
 <script>
 export default {
   name: 'delete',
+  props: ['binId'],
   data: function() {
     return {
       response: '',
@@ -56,5 +59,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import './../../scss/elements/variables.scss';
 @import './delete.scss';
 </style>

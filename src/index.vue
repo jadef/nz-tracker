@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import grid from './components/grid.vue';
 import controls from './components/controls.vue';
 
