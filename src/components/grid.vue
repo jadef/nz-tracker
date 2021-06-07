@@ -31,14 +31,14 @@ export default {
 
       const collectionGetOptions = {
         method: 'GET',
+        url: collectionURL,
         headers: {
           'content-type': 'application/json',
           'X-Master-Key': key,
         },
       };
 
-      axios
-        .get(collectionURL, collectionGetOptions)
+      axios(collectionGetOptions)
         .then(function(response) {
           // Success!
           self.getAllCards(response.data);
@@ -60,14 +60,14 @@ export default {
 
       const binGetOptions = {
         method: 'GET',
+        url: binURL,
         headers: {
           'content-type': 'application/json',
           'X-Master-Key': key,
         },
       };
 
-      axios
-        .get(binURL, binGetOptions)
+      axios(binGetOptions)
         .then(function(response) {
           // Success!
           var data = response.data.record;

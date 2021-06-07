@@ -92,6 +92,8 @@
 </template>
 
 <script>
+const axios = require('axios');
+
 export default {
   name: "create",
   data: function () {
@@ -110,68 +112,55 @@ export default {
       effort: "",
       distance: "",
       favorite: false,
-      beenthere: false,
     };
   },
   methods: {
     processForm: function () {
-      var entry =
-        '{ "name": "' +
-        this.name +
-        '", "category": "' +
-        this.category +
-        '", "image": "' +
-        this.image +
-        '", "maps": "' +
-        this.maps +
-        '", "photos": "' +
-        this.photos +
-        '", "doc": "' +
-        this.doc +
-        '", "relevant": ' +
-        this.relevant +
-        ', "description": "' +
-        this.description +
-        '", "date": "' +
-        this.date +
-        '", "activity": "' +
-        this.activity +
-        '", "effort": "' +
-        this.effort +
-        '", "distance": "' +
-        this.distance +
-        '", "favorite": ' +
-        this.favorite +
-        ', "beenthere": ' +
-        this.beenthere +
-        " }";
+      var entry = {
+        name: this.name,
+        category: this.category,
+        image: this.image,
+        maps: this.maps,
+        photos: this.photos,
+        doc: this.doc,
+        relevant: this.relevant,
+        description: this.description,
+        date: this.date,
+        activity: this.activity,
+        effort: this.effort,
+        distance: this.distance,
+        favorite: !!this.favorite,
+      };
 
       this.submitForm(entry);
     },
     submitForm: function (entry) {
       var self = this;
-      var dataURL = "https://api.jsonbin.io/b";
-      var key = "$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa";
+      var binURL = 'https://api.jsonbin.io/v3/b/';
+      var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
 
-      let req = new XMLHttpRequest();
-
-      req.onreadystatechange = () => {
-        if (req.readyState == XMLHttpRequest.DONE) {
-          var data = JSON.parse(req.responseText);
-          console.log(data);
-          self.response = "created bin " + data.id;
-        }
+      const binGetOptions = {
+        method: 'POST',
+        url: binURL,
+        headers: {
+          'content-type': 'application/json',
+          'X-Master-Key': key,
+          'X-Collection-Id': '5f83f9ee7243cd7e824e36d8',
+        },
+        data: entry
       };
 
-      req.open("POST", dataURL, true);
-      req.setRequestHeader("Content-Type", "application/json");
-      req.setRequestHeader("collection-id", "5f83f9ee7243cd7e824e36d8");
-      req.setRequestHeader("secret-key", key);
-      req.send(entry);
-
-      req.onerror = function () {
-        console.log("error4: add onerror");
-      };
+      axios(binGetOptions)
+        .then(function(response) {
+          // Success!
+          self.response = "created bin " + response.data.metadata.id;
+        })
+        .catch(function(error) {
+          console.log('error4: add error | ' + error);
+        })
+        .then(function() {
+          // always executed
+        });
     },
   },
 };
