@@ -19,15 +19,15 @@
     width: 100%;
 
     &--cat-forest {
-      background-color: $forest;
+      background-image: $g-forest;
     }
 
     &--cat-beach {
-      background-color: $beach;
+      background-image: $g-beach;
     }
 
     &--cat-town {
-      background-color: $town;
+      background-image: $g-town;
     }
 
     &::after {

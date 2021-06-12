@@ -4,7 +4,9 @@
       <div
         :class="bem('start', { cat: card.category })"
         v-on:click="isOpen = !isOpen"
-        v-bind:style="{ backgroundImage: 'url(' + card.image + ')' }"
+        :style="
+          card.image ? { backgroundImage: 'url(' + card.image + ')' } : ''
+        "
       >
         <span :class="bem('title', { open: isOpen })">
           {{ card.name }}
@@ -44,7 +46,7 @@
           </div>
           <delete :binId="card.id" />
           <ul v-if="card.relevant" :class="bem('relevant')">
-            <li v-for="item in card.relevant">
+            <li v-for="item in card.relevant" :key="item.id">
               <a
                 :class="bem('relevant-link')"
                 :href="'#card-' + encodeURIComponent(item)"
@@ -56,29 +58,20 @@
       </transition>
     </div>
     <div :class="bem('attributes', { cat: card.category })">
-      <ul :class="bem('stats')">
-        <li
-          v-if="card.activity"
+      <div :class="bem('stats')">
+        <component
+          :is="activityIcon"
           :class="bem('activity', { value: card.activity })"
-          :title="card.activity"
-        >
-          {{ card.activity }}
-        </li>
-        <li
-          v-if="card.effort && card.effort != 'na'"
+        />
+        <component
+          :is="effortIcon"
           :class="bem('effort', { value: card.effort })"
-          :title="card.effort"
-        >
-          {{ card.effort }}
-        </li>
-        <li
-          v-if="card.distance"
+        />
+        <component
+          :is="distanceIcon"
           :class="bem('distance', { value: card.distance })"
-          :title="card.distance"
-        >
-          {{ card.distance }}
-        </li>
-      </ul>
+        />
+      </div>
       <ul :class="bem('modifiers')">
         <li :class="bem('favorite', { true: card.favorite })">
           {{ card.favorite }}
@@ -90,15 +83,40 @@
 
 <script>
 import entryDelete from './../controls/delete.vue';
+import * as svgComponents from '../../assets/svg/';
 
 export default {
   name: 'card',
   components: {
     delete: entryDelete,
+    ...svgComponents,
   },
-  props: ['card'],
+  props: ['card', 'activityOther'],
   data: function() {
     return { isOpen: false };
+  },
+  computed: {
+    activityIcon() {
+      if (this.card.activity) {
+        return 'activity-' + this.card.activity;
+      } else {
+        return null;
+      }
+    },
+    effortIcon() {
+      if (this.card.effort) {
+        return 'effort-' + this.card.effort;
+      } else {
+        return null;
+      }
+    },
+    distanceIcon() {
+      if (this.card.distance) {
+        return 'distance-' + this.card.distance;
+      } else {
+        return null;
+      }
+    },
   },
 };
 </script>

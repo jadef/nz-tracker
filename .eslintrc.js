@@ -3,8 +3,9 @@ module.exports = {
   env: {
     node: true,
   },
-  parser: '@babel/eslint-parser',
+  parser: 'vue-eslint-parser',
   parserOptions: {
+    parser: '@babel/eslint-parser',
     ecmaFeatures: {
       legacyDecorators: true,
     },
@@ -12,8 +13,8 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:vue/essential',
-    'plugin:prettier-vue/recommended',
-    'plugin:prettier/recommended',
+    // 'plugin:prettier-vue/recommended',
+    // 'plugin:prettier/recommended',
     'prettier',
   ],
   settings: {
