@@ -6,3 +6,6 @@ export { default as activityOther } from './activity-other.vue';
 
 export { default as distanceWalking } from './dist-walk.vue';
 export { default as distanceDrive } from './dist-drive.vue';
+
+export { default as favoriteFalse } from './favorite-false.vue';
+export { default as favoriteTrue } from './favorite-true.vue';

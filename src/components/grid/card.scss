@@ -140,6 +140,20 @@
     }
   }
 
+  &__activity,
+  &__effort,
+  &__distance,
+  &__favorite {
+    height: 30px;
+    margin: 10px 5px;
+    width: 30px;
+
+    ::v-deep .icon-fill {
+      fill: $foreground;
+      fill-opacity: 0.3;
+    }
+  }
+
   &__attributes {
     background: $background;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
@@ -154,33 +168,42 @@
     position: absolute;
     width: 100%;
 
+    ::v-deep .icon-default {
+      fill-opacity: 0.3;
+    }
+
     &--cat-forest {
       border-color: $forest;
+
+      .card__favorite ::v-deep .icon-fill {
+        fill: $forest;
+        fill-opacity: 1;
+      }
     }
 
     &--cat-beach {
       border-color: $beach;
+
+      .card__favorite ::v-deep .icon-fill {
+        fill: $beach;
+        fill-opacity: 1;
+      }
     }
 
     &--cat-town {
       border-color: $town;
-    }
-  }
 
-  &__activity,
-  &__effort,
-  &__distance,
-  &__favorite {
-    height: 30px;
-    margin: 10px 5px;
-    width: 30px;
+      .card__favorite ::v-deep .icon-fill {
+        fill: $town;
+        fill-opacity: 1;
+      }
+    }
   }
 
   &__stats,
   &__modifiers {
     display: flex;
     flex-direction: row;
-    list-style: none;
     margin: 0;
     padding: 0;
   }

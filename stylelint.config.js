@@ -21,5 +21,9 @@ module.exports = {
     'declaration-empty-line-before': 'never',
     'declaration-colon-newline-after': null,
     'shorthand-property-no-redundant-values': null,
+    'selector-pseudo-element-no-unknown': [
+      true,
+      { ignorePseudoElements: ['/^v-/', 'pseudo-element'] },
+    ],
   },
 };

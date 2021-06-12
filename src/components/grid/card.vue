@@ -1,5 +1,5 @@
 <template>
-  <div :id="'card-' + encodeURIComponent(card.name)" :class="bem('wrapper')">
+  <div :id="'card-' + encodeURIComponent(card.name)" :class="bem()">
     <div :class="bem('content')">
       <div
         :class="bem('start', { cat: card.category })"
@@ -62,21 +62,22 @@
         <component
           :is="activityIcon"
           :class="bem('activity', { value: card.activity })"
+          :title="card.activity"
         />
         <component
           :is="effortIcon"
           :class="bem('effort', { value: card.effort })"
+          :title="card.effort"
         />
         <component
           :is="distanceIcon"
           :class="bem('distance', { value: card.distance })"
+          :title="card.distance"
         />
       </div>
-      <ul :class="bem('modifiers')">
-        <li :class="bem('favorite', { true: card.favorite })">
-          {{ card.favorite }}
-        </li>
-      </ul>
+      <div :class="bem('modifiers')">
+        <component :is="favoriteIcon" :class="bem('favorite')" />
+      </div>
     </div>
   </div>
 </template>
@@ -116,6 +117,9 @@ export default {
       } else {
         return null;
       }
+    },
+    favoriteIcon() {
+      return 'favorite-' + this.card.favorite;
     },
   },
 };

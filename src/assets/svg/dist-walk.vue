@@ -8,7 +8,7 @@
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
     <g
-      id="icon-fill"
+      class="icon-fill"
       fill="#000000"
       transform="translate(-14.000000, -12.000000)"
     >
