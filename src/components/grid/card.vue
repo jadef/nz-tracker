@@ -2,13 +2,13 @@
   <div :id="'card-' + encodeURIComponent(card.name)" :class="bem()">
     <div :class="bem('content')">
       <div
-        :class="bem('start', { cat: card.category })"
+        :class="bem('start', { cat: card.category, open: isOpen })"
         v-on:click="isOpen = !isOpen"
         :style="
           card.image ? { backgroundImage: 'url(' + card.image + ')' } : ''
         "
       >
-        <span :class="bem('title', { open: isOpen })">
+        <span :class="bem('title')">
           {{ card.name }}
         </span>
       </div>

@@ -1,4 +1,41 @@
 .card {
+  // Whole card hover effects
+  &:hover {
+    .card__title {
+      bottom: 35px;
+    }
+
+    .card__start {
+      &::after {
+        height: 105px;
+      }
+    }
+
+    .card__attributes {
+      height: 60px;
+    }
+
+    .card__activity,
+    .card__effort,
+    .card__distance,
+    .card__favorite {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  // Card open effects
+  .card__start--open {
+    .card__title {
+      bottom: 0;
+    }
+
+    &::after {
+      height: 105px;
+    }
+  }
+
+  // Standard styles
   &__content {
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
     border-radius: 2px;
@@ -31,32 +68,30 @@
     }
 
     &::after {
+      @include transition(height);
       background-image: linear-gradient(
         -180deg,
         rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.5) 100%
+        rgba(0, 0, 0, 0.45) 100%
       );
       bottom: 0;
       content: '';
       display: block;
-      height: 75px;
+      height: 65px;
       position: absolute;
       width: 100%;
     }
   }
 
   &__title {
+    @include transition(bottom);
     position: absolute;
     bottom: 25px;
     padding: 10px 10px;
     font-size: 1.714em;
-    transition: bottom 0.4s ease 0.2s;
+    // transition: bottom 0.4s ease 0.2s;
     width: 100%;
     z-index: 100;
-
-    &.open {
-      bottom: 0;
-    }
   }
 
   &__relevant {
@@ -144,17 +179,19 @@
   &__effort,
   &__distance,
   &__favorite {
+    @include transition(all);
     height: 30px;
     margin: 10px 5px;
     width: 30px;
 
     ::v-deep .icon-fill {
       fill: $foreground;
-      fill-opacity: 0.3;
+      fill-opacity: 0.5;
     }
   }
 
   &__attributes {
+    @include transition(all);
     background: $background;
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
     border-bottom: 2px solid $foreground;
