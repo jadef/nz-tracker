@@ -1,34 +1,98 @@
 .grid {
-  &__wrapper {
-    margin: 0 15px;
+  padding: 20px 15px 0 15px;
+  position: relative;
+
+  .fade-out-leave-active {
+    opacity: 0;
   }
 
+  &__loading-main {
+    transition: opacity 1s ease;
+    background-color: $background;
+    height: 100vh;
+    left: 0;
+    opacity: 1;
+    padding-top: 20px;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+  }
+
+  &__loading {
+    margin: 0 auto;
+    position: relative;
+    text-indent: -9999em;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: $accent;
+    animation: pulse 1.5s infinite ease-in;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+
+  &__loading-card {
+    transition: all 1.5s ease;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50vw;
+    margin: 0 5px;
+
+    @media screen and (min-width: $bp-small) {
+      height: 30vw;
+    }
+
+    @media screen and (min-width: $bp-medium) {
+      height: 20vw;
+    }
+
+    @media screen and (min-width: $bp-large) {
+      height: 10vw;
+    }
+  }
+
+  &__loading-card,
   &__card {
     margin-bottom: 50px;
     position: relative;
   }
 
   @media screen and (min-width: $bp-small) {
-    &__wrapper {
-      align-items: flex-start;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
+    &__loading-card,
     &__card {
       width: 48%;
     }
   }
 
   @media screen and (min-width: $bp-medium) {
+    &__loading-card,
     &__card {
       width: 32%;
     }
   }
 
   @media screen and (min-width: $bp-large) {
+    &__loading-card,
     &__card {
       width: 24%;
     }

@@ -1,41 +1,4 @@
 .card {
-  // Whole card hover effects
-  &:hover {
-    .card__title {
-      bottom: 35px;
-    }
-
-    .card__start {
-      &::after {
-        height: 105px;
-      }
-    }
-
-    .card__attributes {
-      height: 60px;
-    }
-
-    .card__activity,
-    .card__effort,
-    .card__distance,
-    .card__favorite {
-      height: 40px;
-      width: 40px;
-    }
-  }
-
-  // Card open effects
-  .card__start--open {
-    .card__title {
-      bottom: 0;
-    }
-
-    &::after {
-      height: 105px;
-    }
-  }
-
-  // Standard styles
   &__content {
     box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24);
     border-radius: 2px;
@@ -260,6 +223,43 @@
   @media screen and (min-width: $bp-large) {
     &__start {
       height: 10vw;
+    }
+  }
+
+  // ----
+  // Whole card hover effects
+  &:hover {
+    .card__title {
+      bottom: 35px;
+    }
+
+    .card__start {
+      &::after {
+        height: 105px;
+      }
+    }
+
+    .card__attributes {
+      height: 60px;
+    }
+
+    .card__activity,
+    .card__effort,
+    .card__distance,
+    .card__favorite {
+      height: 40px;
+      width: 40px;
+    }
+  }
+
+  // Card open effects
+  .card__start--open {
+    .card__title {
+      bottom: 0;
+    }
+
+    &::after {
+      height: 105px;
     }
   }
 }

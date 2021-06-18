@@ -1,5 +1,19 @@
 <template>
-  <div :class="bem('wrapper')">
+  <div :class="bem()">
+    <transition name="fade-out" duration="1500">
+      <div v-if="loadingMain" :class="bem('loading-main')">
+        <p :class="bem('loading')">Loading</p>
+      </div>
+    </transition>
+
+    <div
+      :class="bem('loading-card')"
+      v-for="(loadingCard, index) in loadingCards"
+      :key="index"
+    >
+      <p :class="bem('loading')">Card Loading</p>
+    </div>
+
     <card
       :card="card"
       :class="bem('card')"
@@ -19,7 +33,11 @@ export default {
     card: card,
   },
   data: function() {
-    return { cards: [] };
+    return {
+      loadingMain: true,
+      loadingCards: [],
+      cards: [],
+    };
   },
   methods: {
     getRecords: function() {
@@ -51,7 +69,19 @@ export default {
         });
     },
     getAllCards: function(records) {
-      records.forEach((record) => this.getCard(record.record));
+      let cards = records.map((record) => {
+        return new Promise((resolve) => {
+          this.getCard(record.record);
+          resolve();
+        });
+      });
+
+      Promise.all(cards).then((value) => {
+        this.loadingMain = false;
+        this.loadingCards = value;
+      });
+
+      // records.forEach((record) => this.getCard(record.record));
     },
     getCard: function(id) {
       var self = this;
@@ -80,6 +110,7 @@ export default {
         })
         .then(function() {
           // always executed
+          self.loadingCards = self.loadingCards.slice(1);
         });
     },
   },
