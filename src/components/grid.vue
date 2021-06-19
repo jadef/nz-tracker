@@ -8,8 +8,8 @@
 
     <div
       :class="bem('loading-card')"
-      v-for="(loadingCard, index) in loadingCards"
-      :key="index"
+      v-for="(loadingCard, loadingIndex) in loadingCards"
+      :key="loadingIndex"
     >
       <p :class="bem('loading')">Card Loading</p>
     </div>
@@ -17,8 +17,8 @@
     <card
       :card="card"
       :class="bem('card')"
-      v-for="(card, index) in cards"
-      :key="index"
+      v-for="card in cards"
+      :key="card.id"
     ></card>
   </div>
 </template>

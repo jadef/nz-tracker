@@ -28,7 +28,10 @@
     <div :class="bem('toggle')" v-on:click="openCreate = !openCreate">
       Create
     </div>
-    <create v-show="openCreate"></create>
+
+    <transition name="slide">
+      <create v-show="openCreate"></create>
+    </transition>
   </div>
 </template>
 
