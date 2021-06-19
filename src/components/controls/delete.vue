@@ -1,5 +1,5 @@
 <template>
-  <div :class="bem('wrapper')">
+  <div :class="bem()">
     <form id="delete-bin" @submit.prevent="processForm">
       <button :class="bem('submit', { size: 'small' })" type="submit">
         Delete
@@ -24,6 +24,13 @@ export default {
   },
   methods: {
     processForm: function() {
+      // Confirmation
+      var confirmation = confirm('Are you sure you want to delete this?');
+      if (!confirmation) {
+        console.log('rejected');
+        return;
+      }
+
       var self = this;
       var binURL = 'https://api.jsonbin.io/v3/b/' + this.binId;
       var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
