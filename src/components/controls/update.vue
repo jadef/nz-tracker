@@ -1,10 +1,15 @@
 <template>
   <div :class="bem()">
-    <form :class="bem('form')" id="create-bin" @submit.prevent="processForm">
+    <form :class="bem('form')" @submit.prevent="processForm">
       <div :class="bem('section')">
         <div :class="bem('field')">
           <label :class="bem('label')" for="name">Name</label>
-          <input :class="bem('input')" type="text" name="name" v-model="name" />
+          <input
+            :class="bem('input')"
+            type="text"
+            name="name"
+            v-model="updateName"
+          />
         </div>
         <div :class="bem('field')">
           <label :class="bem('label')" for="category">Category</label>
@@ -12,7 +17,7 @@
             :class="bem('input')"
             id="category"
             name="category"
-            v-model="category"
+            v-model="updateCategory"
           >
             <option value="forest">Forest</option>
             <option value="beach">Beach</option>
@@ -28,7 +33,7 @@
             :class="bem('input')"
             type="text"
             name="image"
-            v-model="image"
+            v-model="updateImage"
           />
         </div>
       </div>
@@ -39,7 +44,7 @@
             :class="bem('input')"
             id="activity"
             name="activity"
-            v-model="activity"
+            v-model="updateActivity"
           >
             <option value="lounge">Lounge</option>
             <option value="hike">Hike</option>
@@ -54,7 +59,7 @@
             :class="bem('input')"
             id="effort"
             name="effort"
-            v-model="effort"
+            v-model="updateEffort"
           >
             <option value="easy">Easy</option>
             <option value="moderate">Moderate</option>
@@ -68,7 +73,7 @@
             :class="bem('input')"
             id="distance"
             name="distance"
-            v-model="distance"
+            v-model="updateDistance"
           >
             <option value="walking">Walking</option>
             <option value="drive">Drive</option>
@@ -81,7 +86,12 @@
       <div :class="bem('section')">
         <div :class="bem('field')">
           <label :class="bem('label')" for="maps">Google Maps Link</label>
-          <input :class="bem('input')" type="text" name="maps" v-model="maps" />
+          <input
+            :class="bem('input')"
+            type="text"
+            name="maps"
+            v-model="updateMaps"
+          />
         </div>
         <div :class="bem('field')">
           <label :class="bem('label')" for="photos">Photos Link</label>
@@ -89,12 +99,17 @@
             :class="bem('input')"
             type="text"
             name="photos"
-            v-model="photos"
+            v-model="updatePhotos"
           />
         </div>
         <div :class="bem('field')">
           <label :class="bem('label')" for="doc">DOC (or website)</label>
-          <input :class="bem('input')" type="text" name="doc" v-model="doc" />
+          <input
+            :class="bem('input')"
+            type="text"
+            name="doc"
+            v-model="updateDoc"
+          />
         </div>
       </div>
       <div :class="bem('section')">
@@ -108,7 +123,7 @@
               id="favorite1"
               name="favorite"
               value="true"
-              v-model="favorite"
+              v-model="updateFavorite"
             />
             <label :class="bem('inlinelabel')" for="favorite2">False</label>
             <input
@@ -117,13 +132,18 @@
               id="favorite2"
               name="favorite"
               value="false"
-              v-model="favorite"
+              v-model="updateFavorite"
             />
           </div>
         </div>
         <div :class="bem('field', { display: 'hidden' })">
           <label :class="bem('label')" for="date">Date</label>
-          <input :class="bem('input')" type="date" name="date" v-model="date" />
+          <input
+            :class="bem('input')"
+            type="date"
+            name="date"
+            v-model="updateDate"
+          />
         </div>
 
         <div :class="bem('field')">
@@ -132,7 +152,7 @@
             :class="bem('input')"
             type="text"
             name="description"
-            v-model="description"
+            v-model="updateDescription"
           ></textarea>
         </div>
         <!-- <div :class="bem('field')">
@@ -142,7 +162,7 @@
       </div>
 
       <button :class="bem('submit')" type="submit">
-        Add
+        Save
       </button>
 
       <transition name="slide">
@@ -156,57 +176,73 @@
 const axios = require('axios');
 
 export default {
-  name: 'create',
+  name: 'update',
   data: function() {
     return {
       response: '',
-      name: '',
-      category: 'forest',
-      image: '',
-      maps: '',
-      photos: '',
-      doc: '',
-      relevant: [],
-      activity: 'hike',
-      effort: 'easy',
-      distance: 'drive',
-      favorite: false,
-      description: '',
-      date: '',
+      updateName: this.name,
+      updateCategory: this.category,
+      updateImage: this.image,
+      updateMaps: this.maps,
+      updatePhotos: this.photos,
+      updateDoc: this.doc,
+      updateActivity: this.activity,
+      updateEffort: this.effort,
+      updateDistance: this.distance,
+      updateFavorite: this.favorite,
+      updateDescription: this.description,
+      updateDate: this.date,
     };
   },
+  props: [
+    // 'card',
+    'name',
+    'category',
+    'image',
+    'maps',
+    'photos',
+    'doc',
+    'relevant',
+    'activity',
+    'effort',
+    'distance',
+    'favorite',
+    'description',
+    'date',
+    'binId',
+  ],
   methods: {
     processForm: function() {
       var entry = {
-        name: this.name,
-        category: this.category,
-        image: this.image,
-        maps: this.maps,
-        photos: this.photos,
-        doc: this.doc,
-        relevant: this.relevant,
-        activity: this.activity,
-        effort: this.effort,
-        distance: this.distance,
-        favorite: !!this.favorite,
-        description: this.description,
-        date: this.date,
+        name: this.updateName,
+        category: this.updateCategory,
+        image: this.updateImage,
+        maps: this.updateMaps,
+        photos: this.updatePhotos,
+        doc: this.updateDoc,
+        relevant: this.updateRelevant,
+        activity: this.updateActivity,
+        effort: this.updateEffort,
+        distance: this.updateDistance,
+        favorite: !!this.updateFavorite,
+        description: this.updateDescription,
+        date: this.updateDate,
       };
 
       this.submitForm(entry);
     },
     submitForm: function(entry) {
       var self = this;
-      var binURL = 'https://api.jsonbin.io/v3/b/';
+      var binURL = 'https://api.jsonbin.io/v3/b/' + this.binId;
       var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
 
       const binPostOptions = {
-        method: 'POST',
+        method: 'PUT',
         url: binURL,
         headers: {
           'content-type': 'application/json',
           'X-Master-Key': key,
-          'X-Collection-Id': '5f83f9ee7243cd7e824e36d8',
+          'X-Bin-Versioning': false,
         },
         data: entry,
       };
@@ -214,11 +250,11 @@ export default {
       axios(binPostOptions)
         .then(function(response) {
           // Success!
-          self.response = 'created bin ' + response.data.metadata.id;
-          self.$emit('addCard', response.data.metadata.id);
+          console.log(response);
+          self.response = 'Entry updated!';
         })
         .catch(function(error) {
-          console.log('error4: add error | ' + error);
+          console.log('error5: update error | ' + error);
         })
         .then(function() {
           // always executed
@@ -230,5 +266,5 @@ export default {
 
 <style lang="scss" scoped>
 @import './../../scss/elements/variables.scss';
-@import './create.scss';
+@import './update.scss';
 </style>

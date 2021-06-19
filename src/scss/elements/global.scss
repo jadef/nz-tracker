@@ -38,6 +38,27 @@ button {
   }
 }
 
+input,
+select,
+textarea {
+  border: 1px solid $light;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
+  font-family: 'Roboto', sans-serif;
+  padding: 6px 10px;
+
+  &:focus {
+    border-bottom: 1px solid $accent;
+    outline: none;
+  }
+
+  &[type='radio'] {
+    border: none;
+    box-shadow: none;
+    width: auto;
+  }
+}
+
 .slide-enter-active,
 .slide-leave-active {
   transition: max-height 1s ease;

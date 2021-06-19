@@ -44,8 +44,37 @@
           <div :class="bem('date')" v-on:click="isOpen = !isOpen">
             {{ card.date }}
           </div>
-          <delete :binId="card.id" v-on:removeCard="removeCard" />
-          <ul v-if="card.relevant" :class="bem('relevant')">
+          <div :class="bem('edit')">
+            <delete :binId="card.id" v-on:removeCard="removeCard" />
+
+            <button
+              :class="bem('toggle-update', { size: 'small' })"
+              v-on:click="openUpdate = !openUpdate"
+            >
+              Update
+            </button>
+            <transition name="slide">
+              <update
+                v-show="openUpdate"
+                :binId="card.id"
+                :activity="card.activity"
+                :category="card.category"
+                :date="card.date"
+                :description="card.description"
+                :distance="card.distance"
+                :doc="card.doc"
+                :effort="card.effort"
+                :favorite="card.favorite"
+                :image="card.image"
+                :maps="card.maps"
+                :name="card.name"
+                :photos="card.photos"
+                :relevant="card.relevant"
+              ></update>
+            </transition>
+          </div>
+
+          <!-- <ul v-if="card.relevant" :class="bem('relevant')">
             <li v-for="item in card.relevant" :key="item.id">
               <a
                 :class="bem('relevant-link')"
@@ -53,7 +82,7 @@
                 >{{ item }}</a
               >
             </li>
-          </ul>
+          </ul> -->
         </div>
       </transition>
     </div>
@@ -84,18 +113,23 @@
 
 <script>
 import entryDelete from './../controls/delete.vue';
+import entryUpdate from './../controls/update.vue';
 import * as svgComponents from '../../assets/svg/';
 
 export default {
   name: 'card',
   components: {
     delete: entryDelete,
+    update: entryUpdate,
     ...svgComponents,
   },
-  props: ['card', 'activityOther'],
   data: function() {
-    return { isOpen: false };
+    return {
+      isOpen: false,
+      openUpdate: false,
+    };
   },
+  props: ['card', 'activityOther'],
   methods: {
     removeCard: function() {
       this.$emit('removeCard', this.card.id);
