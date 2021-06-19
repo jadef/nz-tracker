@@ -30,7 +30,7 @@
     </div>
 
     <transition name="slide">
-      <create v-show="openCreate"></create>
+      <create v-show="openCreate" v-on:addCard="addCard"></create>
     </transition>
   </div>
 </template>
@@ -47,6 +47,15 @@ export default {
     return {
       openCreate: false,
     };
+  },
+  methods: {
+    addCard: function(id) {
+      var self = this;
+      self.$emit('addCard', id);
+      setTimeout(function() {
+        self.openCreate = false;
+      }, 3000);
+    },
   },
 };
 </script>

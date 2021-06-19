@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <controls></controls>
-    <grid :cards="cards"></grid>
+    <controls v-on:addCard="addCard"></controls>
+    <grid :additionalCard="additionalCard"></grid>
   </div>
 </template>
 
@@ -16,7 +16,12 @@ export default {
     controls,
   },
   data: function() {
-    return { cards: [] };
+    return { additionalCard: '' };
+  },
+  methods: {
+    addCard: function(id) {
+      this.additionalCard = id;
+    },
   },
 };
 </script>

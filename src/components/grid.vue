@@ -19,6 +19,7 @@
       :class="bem('card')"
       v-for="card in cards"
       :key="card.id"
+      v-on:removeCard="removeCard"
     ></card>
   </div>
 </template>
@@ -38,6 +39,12 @@ export default {
       loadingCards: [],
       cards: [],
     };
+  },
+  props: ['additionalCard'],
+  watch: {
+    additionalCard: function() {
+      this.getCard(this.additionalCard);
+    },
   },
   methods: {
     getRecords: function() {
@@ -112,6 +119,14 @@ export default {
           // always executed
           self.loadingCards = self.loadingCards.slice(1);
         });
+    },
+    removeCard: function(id) {
+      var self = this;
+      setTimeout(function() {
+        self.cards = self.cards.filter(function(obj) {
+          return obj.id !== id;
+        });
+      }, 3000);
     },
   },
   created() {

@@ -44,7 +44,7 @@
           <div :class="bem('date')" v-on:click="isOpen = !isOpen">
             {{ card.date }}
           </div>
-          <delete :binId="card.id" />
+          <delete :binId="card.id" v-on:removeCard="removeCard" />
           <ul v-if="card.relevant" :class="bem('relevant')">
             <li v-for="item in card.relevant" :key="item.id">
               <a
@@ -95,6 +95,11 @@ export default {
   props: ['card', 'activityOther'],
   data: function() {
     return { isOpen: false };
+  },
+  methods: {
+    removeCard: function() {
+      this.$emit('removeCard', this.card.id);
+    },
   },
   computed: {
     activityIcon() {

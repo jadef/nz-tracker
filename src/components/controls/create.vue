@@ -145,7 +145,9 @@
         Add
       </button>
 
-      <div :class="bem('response')" v-show="response">{{ response }}</div>
+      <transition name="slide">
+        <div :class="bem('response')" v-show="response">{{ response }}</div>
+      </transition>
     </form>
   </div>
 </template>
@@ -198,7 +200,7 @@ export default {
       var binURL = 'https://api.jsonbin.io/v3/b/';
       var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
 
-      const binGetOptions = {
+      const binPostOptions = {
         method: 'POST',
         url: binURL,
         headers: {
@@ -209,10 +211,11 @@ export default {
         data: entry,
       };
 
-      axios(binGetOptions)
+      axios(binPostOptions)
         .then(function(response) {
           // Success!
           self.response = 'created bin ' + response.data.metadata.id;
+          self.$emit('addCard', response.data.metadata.id);
         })
         .catch(function(error) {
           console.log('error4: add error | ' + error);
