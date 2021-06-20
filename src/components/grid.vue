@@ -5,13 +5,6 @@
         <p :class="bem('loading')">Loading</p>
       </div>
     </transition>
-    <div
-      :class="bem('loading-card')"
-      v-for="(loadingCard, loadingIndex) in loadingCards"
-      :key="loadingIndex"
-    >
-      <p :class="bem('loading')">Card Loading</p>
-    </div>
 
     <card
       :card="card"
@@ -21,6 +14,23 @@
       :key="card.id"
       v-on:removeCard="removeCard"
     ></card>
+
+    <div
+      :class="bem('loading-card')"
+      v-for="(loadingCard, loadingIndex) in loadingCards"
+      :key="loadingIndex"
+    >
+      <div :class="bem('loading-content')">
+        <p :class="bem('loading')">Card Loading</p>
+      </div>
+      <div :class="bem('loading-attributes')"></div>
+    </div>
+
+    <div v-if="records.length >= 10" :class="bem('pagination')">
+      <button v-on:click="getRecords(records.slice(-1)[0].record)">
+        Get more
+      </button>
+    </div>
   </div>
 </template>
 
@@ -37,6 +47,7 @@ export default {
     return {
       loadingMain: true,
       loadingCards: [],
+      records: [],
       cards: [],
     };
   },
@@ -47,13 +58,16 @@ export default {
     },
   },
   methods: {
-    getRecords: function() {
+    getRecords: function(lastBin) {
       var self = this;
       // This fetches json data from my stored collection
       var collectionURL =
         'https://api.jsonbin.io/v3/c/5f83f9ee7243cd7e824e36d8/bins';
       var key = '$2b$10$1HxaV7JvegP8jrtYL4U3dOH6IsQVCoiK7bNGrgHLYV2J7LAcPpKWa';
-
+      // For pagination
+      if (lastBin) {
+        collectionURL = collectionURL + '/' + lastBin;
+      }
       const collectionGetOptions = {
         method: 'GET',
         url: collectionURL,
@@ -66,6 +80,7 @@ export default {
       axios(collectionGetOptions)
         .then(function(response) {
           // Success!
+          self.records = response.data;
           self.getAllCards(response.data);
         })
         .catch(function(error) {

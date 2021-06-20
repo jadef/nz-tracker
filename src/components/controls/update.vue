@@ -250,8 +250,7 @@ export default {
       axios(binPostOptions)
         .then(function(response) {
           // Success!
-          console.log(response);
-          self.response = 'Entry updated!';
+          self.response = response.data.record.name + ' updated!';
         })
         .catch(function(error) {
           console.log('error5: update error | ' + error);
