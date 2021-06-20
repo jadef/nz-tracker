@@ -5,7 +5,6 @@
         <p :class="bem('loading')">Loading</p>
       </div>
     </transition>
-
     <div
       :class="bem('loading-card')"
       v-for="(loadingCard, loadingIndex) in loadingCards"
@@ -17,6 +16,7 @@
     <card
       :card="card"
       :class="bem('card')"
+      :editing="editing"
       v-for="card in cards"
       :key="card.id"
       v-on:removeCard="removeCard"
@@ -40,7 +40,7 @@ export default {
       cards: [],
     };
   },
-  props: ['additionalCard'],
+  props: ['additionalCard', 'editing'],
   watch: {
     additionalCard: function() {
       this.getCard(this.additionalCard);

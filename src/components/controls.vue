@@ -25,12 +25,22 @@
       </mask>
     </svg>
 
-    <div :class="bem('toggle')" v-on:click="openCreate = !openCreate">
-      Create
+    <div :class="bem('controls')">
+      <div :class="bem('edit')" v-on:click="editing = !editing">Edit Mode</div>
+      <button
+        v-if="editing"
+        :class="bem('toggle', 'small')"
+        v-on:click="openCreate = !openCreate"
+      >
+        Create
+      </button>
     </div>
-
     <transition name="slide">
-      <create v-show="openCreate" v-on:addCard="addCard"></create>
+      <create
+        v-if="editing"
+        v-show="openCreate"
+        v-on:addCard="addCard"
+      ></create>
     </transition>
   </div>
 </template>
@@ -45,6 +55,7 @@ export default {
   },
   data: function() {
     return {
+      editing: false,
       openCreate: false,
     };
   },
@@ -55,6 +66,11 @@ export default {
       setTimeout(function() {
         self.openCreate = false;
       }, 3000);
+    },
+  },
+  watch: {
+    editing: function() {
+      this.$emit('editing', this.editing);
     },
   },
 };

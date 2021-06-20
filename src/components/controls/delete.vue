@@ -1,7 +1,7 @@
 <template>
   <div :class="bem()">
     <form id="delete-bin" @submit.prevent="processForm">
-      <button :class="bem('submit', { size: 'small' })" type="submit">
+      <button :class="bem('submit', 'small')" type="submit">
         Delete
       </button>
       <transition name="slide">

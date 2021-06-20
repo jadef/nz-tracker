@@ -44,11 +44,12 @@
           <div :class="bem('date')" v-on:click="isOpen = !isOpen">
             {{ card.date }}
           </div>
-          <div :class="bem('edit')">
+
+          <div :class="bem('edit')" v-if="editing">
             <delete :binId="card.id" v-on:removeCard="removeCard" />
 
             <button
-              :class="bem('toggle-update', { size: 'small' })"
+              :class="bem('toggle-update', 'small')"
               v-on:click="openUpdate = !openUpdate"
             >
               Update
@@ -129,7 +130,7 @@ export default {
       openUpdate: false,
     };
   },
-  props: ['card', 'activityOther'],
+  props: ['card', 'editing', 'activityOther'],
   methods: {
     removeCard: function() {
       this.$emit('removeCard', this.card.id);

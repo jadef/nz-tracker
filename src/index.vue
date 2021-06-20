@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <controls v-on:addCard="addCard"></controls>
-    <grid :additionalCard="additionalCard"></grid>
+    <controls v-on:addCard="addCard" v-on:editing="toggleEditing"></controls>
+    <grid :additionalCard="additionalCard" :editing="editing"></grid>
   </div>
 </template>
 
@@ -16,11 +16,17 @@ export default {
     controls,
   },
   data: function() {
-    return { additionalCard: '' };
+    return {
+      additionalCard: '',
+      editing: false,
+    };
   },
   methods: {
     addCard: function(id) {
       this.additionalCard = id;
+    },
+    toggleEditing: function(value) {
+      this.editing = value;
     },
   },
 };
