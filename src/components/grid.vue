@@ -7,12 +7,13 @@
     </transition>
 
     <card
-      :card="card"
       :class="bem('card')"
-      :editing="editing"
       v-for="card in cards"
       :key="card.id"
+      :card="card"
+      :editing="editing"
       v-on:removeCard="removeCard"
+      v-on:updateCard="updateCard"
     ></card>
 
     <div
@@ -136,12 +137,21 @@ export default {
         });
     },
     removeCard: function(id) {
-      var self = this;
-      setTimeout(function() {
-        self.cards = self.cards.filter(function(obj) {
-          return obj.id !== id;
-        });
-      }, 3000);
+      this.cards = this.cards.filter(function(obj) {
+        return obj.id !== id;
+      });
+    },
+    updateCard: function(data) {
+      var cardData = data.record;
+      cardData['id'] = data.metadata.parentId; // Tack id on for bin visibility
+      // Find and replace the exact card data
+
+      var index = this.cards.findIndex((x) => x.id === data.metadata.parentId);
+      this.cards[index] = cardData;
+
+      console.log(
+        "TODO: this doesn't actually refresh the card, though we've updated the card in cards. Need to fix"
+      );
     },
   },
   created() {

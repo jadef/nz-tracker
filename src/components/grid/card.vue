@@ -71,6 +71,7 @@
                 :name="card.name"
                 :photos="card.photos"
                 :relevant="card.relevant"
+                v-on:updateCard="updateCard"
               ></update>
             </transition>
           </div>
@@ -109,6 +110,7 @@
         <component :is="favoriteIcon" :class="bem('favorite')" />
       </div>
     </div>
+    {{ card }}
   </div>
 </template>
 
@@ -133,7 +135,16 @@ export default {
   props: ['card', 'editing', 'activityOther'],
   methods: {
     removeCard: function() {
-      this.$emit('removeCard', this.card.id);
+      var self = this;
+      setTimeout(function() {
+        self.$emit('removeCard', self.card.id);
+      }, 3000);
+    },
+    updateCard: function(data) {
+      var self = this;
+      setTimeout(function() {
+        self.$emit('updateCard', data);
+      }, 3000);
     },
   },
   computed: {

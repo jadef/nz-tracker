@@ -251,6 +251,7 @@ export default {
         .then(function(response) {
           // Success!
           self.response = response.data.record.name + ' updated!';
+          self.$emit('updateCard', response.data);
         })
         .catch(function(error) {
           console.log('error5: update error | ' + error);
