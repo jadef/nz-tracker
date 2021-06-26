@@ -10,6 +10,7 @@ export { default as distanceLongDrive } from './dist-long-drive.vue';
 export { default as distanceOvernight } from './dist-overnight.vue';
 export { default as distanceFlight } from './dist-flight.vue';
 
+export { default as effortNa } from './effort-na.vue';
 export { default as effortEasy } from './effort-easy.vue';
 export { default as effortModerate } from './effort-moderate.vue';
 export { default as effortHard } from './effort-hard.vue';

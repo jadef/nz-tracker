@@ -39,21 +39,6 @@
       </div>
       <div :class="bem('section')">
         <div :class="bem('field')">
-          <label :class="bem('label')" for="activity">Activity</label>
-          <select
-            :class="bem('input')"
-            id="activity"
-            name="activity"
-            v-model="updateActivity"
-          >
-            <option value="lounge">Lounge</option>
-            <option value="hike">Hike</option>
-            <option value="backpack">Backpack</option>
-            <option value="social">Social</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div :class="bem('field')">
           <label :class="bem('label')" for="location">Distance</label>
           <select
             :class="bem('input')"
@@ -69,6 +54,21 @@
           </select>
         </div>
         <div :class="bem('field')">
+          <label :class="bem('label')" for="activity">Activity</label>
+          <select
+            :class="bem('input')"
+            id="activity"
+            name="activity"
+            v-model="updateActivity"
+          >
+            <option value="lounge">Lounge</option>
+            <option value="hike">Hike</option>
+            <option value="backpack">Backpack</option>
+            <option value="social">Social</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div :class="bem('field')">
           <label :class="bem('label')" for="effort">Effort</label>
           <select
             :class="bem('input')"
@@ -76,6 +76,7 @@
             name="effort"
             v-model="updateEffort"
           >
+            <option value="na">N/A</option>
             <option value="easy">Easy</option>
             <option value="moderate">Moderate</option>
             <option value="hard">Hard</option>

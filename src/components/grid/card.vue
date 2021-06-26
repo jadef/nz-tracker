@@ -91,14 +91,14 @@
     <div :class="bem('attributes', { cat: card.category })">
       <div :class="bem('stats')">
         <component
-          :is="activityIcon"
-          :class="bem('activity', { value: card.activity })"
-          :title="card.activity"
-        />
-        <component
           :is="distanceIcon"
           :class="bem('distance', { value: card.distance })"
           :title="card.distance"
+        />
+        <component
+          :is="activityIcon"
+          :class="bem('activity', { value: card.activity })"
+          :title="card.activity"
         />
         <component
           :is="effortIcon"
