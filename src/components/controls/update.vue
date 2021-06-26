@@ -54,20 +54,6 @@
           </select>
         </div>
         <div :class="bem('field')">
-          <label :class="bem('label')" for="effort">Effort</label>
-          <select
-            :class="bem('input')"
-            id="effort"
-            name="effort"
-            v-model="updateEffort"
-          >
-            <option value="easy">Easy</option>
-            <option value="moderate">Moderate</option>
-            <option value="hard">Hard</option>
-            <option value="asskicking">Ass Kicking</option>
-          </select>
-        </div>
-        <div :class="bem('field')">
           <label :class="bem('label')" for="location">Distance</label>
           <select
             :class="bem('input')"
@@ -80,6 +66,20 @@
             <option value="long-drive">Long-Drive</option>
             <option value="overnight">Overnight</option>
             <option value="flight">Flight</option>
+          </select>
+        </div>
+        <div :class="bem('field')">
+          <label :class="bem('label')" for="effort">Effort</label>
+          <select
+            :class="bem('input')"
+            id="effort"
+            name="effort"
+            v-model="updateEffort"
+          >
+            <option value="easy">Easy</option>
+            <option value="moderate">Moderate</option>
+            <option value="hard">Hard</option>
+            <option value="asskicking">Ass Kicking</option>
           </select>
         </div>
       </div>

@@ -1,5 +1,5 @@
 <template>
-  <div :id="'card-' + encodeURIComponent(card.name)" :class="bem()">
+  <div :id="'card-' + encodeURIComponent(card.id)" :class="bem()">
     <div :class="bem('content')">
       <div
         :class="bem('start', { cat: card.category, open: isOpen })"
@@ -96,21 +96,20 @@
           :title="card.activity"
         />
         <component
-          :is="effortIcon"
-          :class="bem('effort', { value: card.effort })"
-          :title="card.effort"
-        />
-        <component
           :is="distanceIcon"
           :class="bem('distance', { value: card.distance })"
           :title="card.distance"
+        />
+        <component
+          :is="effortIcon"
+          :class="bem('effort', { value: card.effort })"
+          :title="card.effort"
         />
       </div>
       <div :class="bem('modifiers')">
         <component :is="favoriteIcon" :class="bem('favorite')" />
       </div>
     </div>
-    {{ card }}
   </div>
 </template>
 

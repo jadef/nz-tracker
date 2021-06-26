@@ -7,5 +7,10 @@ export { default as activityOther } from './activity-other.vue';
 export { default as distanceWalking } from './dist-walk.vue';
 export { default as distanceDrive } from './dist-drive.vue';
 
+export { default as effortEasy } from './effort-easy.vue';
+export { default as effortModerate } from './effort-moderate.vue';
+export { default as effortHard } from './effort-hard.vue';
+export { default as effortAsskicking } from './effort-asskicking.vue';
+
 export { default as favoriteFalse } from './favorite-false.vue';
 export { default as favoriteTrue } from './favorite-true.vue';
