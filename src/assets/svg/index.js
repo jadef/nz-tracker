@@ -6,6 +6,9 @@ export { default as activityOther } from './activity-other.vue';
 
 export { default as distanceWalking } from './dist-walk.vue';
 export { default as distanceDrive } from './dist-drive.vue';
+export { default as distanceLongDrive } from './dist-long-drive.vue';
+export { default as distanceOvernight } from './dist-overnight.vue';
+export { default as distanceFlight } from './dist-flight.vue';
 
 export { default as effortEasy } from './effort-easy.vue';
 export { default as effortModerate } from './effort-moderate.vue';
