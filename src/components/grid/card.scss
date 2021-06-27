@@ -153,6 +153,10 @@
     }
   }
 
+  &__effort.effort-na {
+    display: none;
+  }
+
   &__attributes {
     @include transition(all);
     background: $background;

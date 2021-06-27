@@ -1,6 +1,8 @@
-.update {
+.validate {
   &__form {
     padding: 20px 10px;
+    max-width: 400px;
+    margin: 0 auto;
   }
 
   &__field {
@@ -16,23 +18,20 @@
   }
 
   &__label {
+    font-weight: 500;
+    letter-spacing: 0.05em;
     padding: 6px 10px 6px 20px;
     text-align: right;
-    width: 40%;
+    width: 48%;
+  }
+
+  &__spacer {
+    padding: 6px 0;
+    width: 4%;
   }
 
   &__input {
-    width: 60%;
-
-    &--type-radio {
-      border: none;
-      box-shadow: none;
-      padding-top: 3px;
-
-      input {
-        margin-right: 10px;
-      }
-    }
+    width: 48%;
   }
 
   &__submit {

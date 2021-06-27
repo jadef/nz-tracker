@@ -26,7 +26,10 @@
     </svg>
 
     <div :class="bem('controls')">
-      <div :class="bem('edit')" v-on:click="editing = !editing">Edit Mode</div>
+      <div :class="bem('edit')" v-on:click="toggleAccess">
+        <span v-if="editing">Editing</span>
+        <span v-else>Edit Mode</span>
+      </div>
       <button
         v-if="editing"
         :class="bem('toggle', 'small')"
@@ -42,19 +45,28 @@
         v-on:addCard="addCard"
       ></create>
     </transition>
+    <transition name="slide">
+      <validation
+        v-if="validating"
+        v-on:validated="closeValidation"
+      ></validation>
+    </transition>
   </div>
 </template>
 
 <script>
 import entryCreate from './controls/create.vue';
+import validate from './controls/validate.vue';
 
 export default {
   name: 'controls',
   components: {
     create: entryCreate,
+    validation: validate,
   },
   data: function() {
     return {
+      validating: false,
       editing: false,
       openCreate: false,
     };
@@ -65,7 +77,18 @@ export default {
       self.$emit('addCard', id);
       setTimeout(function() {
         self.openCreate = false;
-      }, 3000);
+      }, 2000);
+    },
+    toggleAccess: function() {
+      this.editing = false;
+      this.validating = !this.validating;
+    },
+    closeValidation: function() {
+      var self = this;
+      self.editing = true;
+      setTimeout(function() {
+        self.validating = false;
+      }, 2000);
     },
   },
   watch: {

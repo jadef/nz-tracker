@@ -64,6 +64,18 @@ textarea {
   }
 }
 
+.form-response {
+  background-color: $light;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 4px 0 rgba(0, 0, 0, 0.15);
+  color: $rev-foreground;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
 .slide-enter-active,
 .slide-leave-active {
   transition: max-height 1s ease;

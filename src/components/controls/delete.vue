@@ -5,7 +5,9 @@
         Delete
       </button>
       <transition name="slide">
-        <div :class="bem('response')" v-show="response">{{ response }}</div>
+        <div :class="bem('response', 'form-response')" v-show="response">
+          {{ response }}
+        </div>
       </transition>
     </form>
   </div>
