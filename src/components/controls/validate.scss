@@ -18,6 +18,8 @@
   }
 
   &__label {
+    color: $background;
+    font-size: 16px;
     font-weight: 500;
     letter-spacing: 0.05em;
     padding: 6px 10px 6px 20px;
@@ -26,6 +28,7 @@
   }
 
   &__spacer {
+    color: $background;
     padding: 6px 0;
     width: 4%;
   }

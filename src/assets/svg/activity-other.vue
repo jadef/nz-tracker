@@ -7,6 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
+    <title>Activity: Other</title>
     <path
       class="icon-fill"
       fill="#000000"

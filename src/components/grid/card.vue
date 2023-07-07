@@ -93,17 +93,14 @@
         <component
           :is="distanceIcon"
           :class="bem('distance', { value: card.distance })"
-          :title="card.distance"
         />
         <component
           :is="activityIcon"
           :class="bem('activity', { value: card.activity })"
-          :title="card.activity"
         />
         <component
           :is="effortIcon"
           :class="bem('effort', { value: card.effort })"
-          :title="card.effort"
         />
       </div>
       <div :class="bem('modifiers')">

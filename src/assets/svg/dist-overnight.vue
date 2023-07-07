@@ -7,6 +7,7 @@
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
   >
+    <title>Distance: Overnight</title>
     <g
       id="dist-over-night"
       fill="#000000"
