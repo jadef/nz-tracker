@@ -19,7 +19,7 @@
           font-weight="400"
         >
           <text>
-            <tspan x="50%" y="100%" text-anchor="middle">nz hike keeper</tspan>
+            <tspan x="50%" y="100%" text-anchor="middle">nz tracker</tspan>
           </text>
         </g>
       </mask>

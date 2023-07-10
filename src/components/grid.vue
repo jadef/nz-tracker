@@ -124,8 +124,7 @@ export default {
         .then(function(response) {
           // Success!
           var data = response.data.record;
-          data['id'] = id; // Tack id on for bin visibility
-
+          data['id'] = response.data.metadata.id; // Tack id on for bin visibility
           self.cards.push(data);
         })
         .catch(function(error) {
